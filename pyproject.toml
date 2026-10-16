@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ffa-video-stitching"
+version = "0.1.0"
+description = "Track-consistent keyframe stitching and source-guided ghost correction for FFA video"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.26,<2",
+  "opencv-python-headless>=4.10,<5",
+  "shapely>=2.0,<3",
+  "scikit-image>=0.24,<0.26",
+]
+
+[project.optional-dependencies]
+eloftr = [
+  "torch>=2.5,<2.6", "torchvision>=0.20,<0.21", "scipy>=1.14,<1.15",
+  "yacs>=0.1.8", "einops>=0.8", "kornia>=0.7.4,<0.8", "loguru>=0.7",
+  "joblib>=1.4", "pillow>=10"
+]
+test = ["pytest>=8.3,<9"]
+
+[project.scripts]
+ffa-stitch = "ffa_stitch.stitch_cli:main"
+ffa-extract = "ffa_stitch.extract:main"
+ffa-ghost-detect = "ffa_stitch.ghost.detect:main"
+ffa-ghost-correct = "ffa_stitch.ghost.correct:main"
+ffa-ghost-synthesize = "ffa_stitch.ghost.synthesize:main"
+ffa-ghost-train = "ffa_stitch.detector_train:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

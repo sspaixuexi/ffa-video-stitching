@@ -1,0 +1,16 @@
+# Python 3.10 environment used for the stitching and correction modules.
+# Install the PyTorch wheel appropriate for your CUDA runtime separately.
+numpy==1.26.4
+opencv-python-headless==4.10.0.84
+scipy==1.14.1
+shapely==2.0.6
+scikit-image==0.24.0
+torch==2.5.1
+torchvision==0.20.1
+yacs==0.1.8
+einops==0.8.0
+kornia==0.7.4
+loguru==0.7.2
+joblib==1.4.2
+pillow==11.0.0
+pytest==8.3.3

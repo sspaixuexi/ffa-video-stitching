@@ -1,0 +1,10 @@
+# Replace this relative root with your local dataset directory.
+path: data/ghost_dataset
+train: images/train
+val: images/val
+names:
+  0: ghost
+
+# YOLO labels live in labels/train and labels/val with matching filename stems.
+# Each row: class_id x_center_normalized y_center_normalized width_normalized height_normalized
+# Empty label files represent images without a ghost box.

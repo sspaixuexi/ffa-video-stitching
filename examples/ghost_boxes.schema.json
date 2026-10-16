@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ghost candidate boxes in a saved panorama canvas",
+  "type": "object",
+  "required": ["coordinate_space", "image_size_wh", "boxes"],
+  "properties": {
+    "coordinate_space": {"const": "piece_canvas_pixels"},
+    "image_size_wh": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 1}},
+    "image_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$", "description": "Optional; if present must match the exact saved panorama file."},
+    "boxes": {
+      "type": "array",
+      "items": {
+        "type": "object", "required": ["xyxy"],
+        "properties": {
+          "xyxy": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "number"}, "description": "Half-open [x1,y1,x2,y2] rectangle in native panorama pixels."},
+          "score": {"type": "number", "minimum": 0, "maximum": 1},
+          "class_id": {"const": 0}
+        }
+      }
+    }
+  }
+}
